@@ -2,9 +2,9 @@ import React from 'react'
 
 function Navbar() {
   return (
- <div className="navbar bg-base-100 shadow-sm bg-yellow-300">
+ <div className="navbar shadow-sm bg-gray-900 text-orange-600">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl">dev Tinder</a>
+    <a className="btn btn-ghost text-xl font-extrabold">Dev Tinder</a>
   </div>
   <div className="flex gap-2">
     <div className="dropdown dropdown-end mx-5">
