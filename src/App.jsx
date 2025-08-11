@@ -1,11 +1,12 @@
 
 import './App.css'
+import Navbar from './components/Navbar.jsx'
 
 function App() {
 
   return (
     <div>
-      <h1 className='text-3xl font-bold underline'>Welcome to My App</h1>
+      <Navbar/>
    
     </div>
   )
