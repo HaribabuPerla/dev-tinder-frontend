@@ -5,17 +5,24 @@ import axiosRequest from '../config/axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {removeUser} from '../utils/userSlice';
+import { useState } from 'react';
+import Toast from './Toast';
 
 
 function Navbar() {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+   const [showToast,setShowToast]=useState({message:"",error:false,open:false})
   const logoutHandler =async () => {
     const res = await axiosRequest("/logout", "post");
     if (res?.data?.status === 200) {
       dispatch(removeUser());
-      alert(res?.data?.message || "Logout Successful");
+         setShowToast({
+      message: res?.data?.message || "Login Successful",
+      error: false,
+      open: true
+    })
       navigate("/login");
      
     }
@@ -25,6 +32,7 @@ function Navbar() {
 
   };
   return (
+    <>
  <div className="navbar shadow-sm bg-gray-900 text-orange-400">
   <div className="flex-1">
     <a className="btn btn-ghost text-xl font-extrabold">Dev Tinder</a>
@@ -65,6 +73,10 @@ function Navbar() {
     </div>
   </div>
 </div>
+  {
+      showToast.open && <Toast open={showToast?.open} message={showToast.message} error={showToast.error} setShowToast={setShowToast}  /> 
+    }
+    </>
   )
 }
 

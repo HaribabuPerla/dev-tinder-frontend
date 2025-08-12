@@ -1,10 +1,23 @@
 import React from 'react'
+import ProfileEdit from '../../components/ProfileEdit'
+import { useSelector } from 'react-redux'
+import UserCard from '../../components/UserCard'
 
-function Profile() {
+ function Profile() {
+    const user= useSelector((store)=>  store.user)
+    console.log("user123===>",user)
+   
   return (
-    <div>
-      Profile Page
+    <>
+    {
+      user ?  <div className='flex justify-center'>
+        <ProfileEdit user={user}/>
+        <UserCard data={user}/>
     </div>
+    :
+    <h1>Loading...</h1>
+    }
+    </>
   )
 }
 

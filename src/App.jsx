@@ -4,6 +4,7 @@ import './App.css'
 import Body from './pages'
 import LoginPage from './pages/LoginPage'
 import Profile from './pages/Profile'
+import Feed from './pages/Feed'
 import { Provider } from 'react-redux'
 import { appStore } from './utils/appStore'
 
@@ -16,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Body/>}>
         <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/feed" element={<div>Feed Page</div>} />
+        <Route path="/feed" element={<Feed/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
 
