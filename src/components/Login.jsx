@@ -3,12 +3,14 @@ import { useState } from 'react'
 import axiosRequest from '../config/axios';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function Login() {
     const [inputData,setInputData]=useState({emailId:"",password:""});
     const dispatch = useDispatch();
+    const navigation=useNavigate();
 
     const changeHandler=(e)=>{
       const {name,value}=e.target;
@@ -25,6 +27,7 @@ function Login() {
   
    dispatch(addUser(response?.data?.data));
     alert(response?.data?.message || "Login Successful");
+    navigation("/feed");
 
     }else{
       alert(response?.data?.message || "Login Failed");
