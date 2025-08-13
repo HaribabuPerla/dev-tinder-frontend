@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { appStore,persistor } from './utils/appStore'
 import Connections from './pages/Connections'
+import Signup from './pages/signup'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Body/>}>
         <Route path="/login" element={<LoginPage/>}/>
+         <Route path="/signup" element={<Signup/>}/>
         <Route path="/feed" element={<Feed/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/requests" element={<Requests/>}/>
