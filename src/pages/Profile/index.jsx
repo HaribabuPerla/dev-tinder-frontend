@@ -5,7 +5,6 @@ import UserCard from '../../components/UserCard'
 
  function Profile() {
     const user= useSelector((store)=>  store.user)
-    console.log("user123===>",user)
    
   return (
     <>

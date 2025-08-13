@@ -35,7 +35,7 @@ function Navbar() {
     <>
  <div className="navbar shadow-sm bg-gray-900 text-orange-400">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl font-extrabold">Dev Tinder</a>
+    <a className="btn:hover btn-ghost text-xl font-extrabold">Dev Tinder</a>
   </div>
   <div className="flex gap-2">
     <div className="dropdown dropdown-end mx-5">
@@ -67,7 +67,22 @@ function Navbar() {
             <span className="badge">New</span>
           </Link>
         </li>
-        <li><a>Settings</a></li>
+          <li>
+          <Link to="/feed"  className="justify-between">
+            Dashboard
+        
+          </Link>
+        </li>
+        <li>
+          <Link to="/requests">
+             Requests
+          </Link>
+        </li>
+          <li>
+          <Link to="/connections">
+             Connections
+          </Link>
+        </li>
         <li onClick={logoutHandler}><a>Logout</a></li>
       </ul>
     </div>

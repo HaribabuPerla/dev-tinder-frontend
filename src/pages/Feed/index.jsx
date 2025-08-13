@@ -27,6 +27,11 @@ function Feed() {
     useEffect(()=>{
         fetchFeed();
     },[])
+    if(feed?.length == 0){
+        return <div className='flex justify-center'>
+                <h1>New Feed is not available</h1> 
+             </div>
+    }
 return (
     <>
         {feed?.length > 0 ? (

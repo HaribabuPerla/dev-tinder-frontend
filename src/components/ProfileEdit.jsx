@@ -28,12 +28,11 @@ function ProfileEdit({user}) {
        }))
 
     }
-    console.log("input-===>",inputData)
+    
 
     const ProfileEditHandler=async()=>{
    const response = await  axiosRequest("/Profile/edit","patch",inputData)
   if(response?.data?.status === 200){
-    console.log("res---->36",response)
   
    dispatch(addUser(response?.data?.data));
     setShowToast({
@@ -45,7 +44,6 @@ function ProfileEdit({user}) {
 
 
     }else{
-        console.log("res====>",response)
        setShowToast({
       message: response?.message || "Profile Edit Failed",
       error: true,
@@ -55,7 +53,7 @@ function ProfileEdit({user}) {
   }
   return (
     <>
-    <div className='flex justify-center items-center m-10 bg-red-500S mb-100'>
+    <div className='flex justify-center items-center m-10 bg-red-500S mb-10'>
         <div className="card bg-gray-900 w-96 shadow-sm">
      <div className="card-body">
     <h2 className="card-title text-amber-100 justify-center underline">Profile Edit</h2>

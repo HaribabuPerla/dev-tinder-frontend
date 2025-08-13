@@ -47,7 +47,7 @@ function Login() {
   }
   return (
     <>
-    <div className='flex justify-center items-center m-10 bg-red-500S'>
+    <div className='flex justify-center items-center mt-5 bg-red-500S'>
         <div className="card bg-gray-900 w-96 shadow-sm">
      <div className="card-body">
     <h2 className="card-title text-amber-100 justify-center underline">Login</h2>
