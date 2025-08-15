@@ -11,6 +11,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { appStore,persistor } from './utils/appStore'
 import Connections from './pages/Connections'
 import Signup from './pages/signup'
+import dotenv from "dotenv"
+dotenv.config()
 
 
 function App() {

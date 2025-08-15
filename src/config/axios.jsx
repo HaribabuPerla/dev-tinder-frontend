@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 import axios from "axios"
 
 export default async function axiosRequest(url,method,data) {
     try {
     const axiosConfig = {
-      baseURL: "http://localhost:7777",
+      // eslint-disable-next-line no-undef
+      baseURL: process.env.BASE_URL,
       url: url,
       method: method || "post",
       headers:{
