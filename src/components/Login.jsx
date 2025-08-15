@@ -73,29 +73,73 @@ function Login({isLogin=true}) {
   }
   return (
     <>
-    <div className='flex justify-center items-center mt-5 bg-red-500S'>
-        <div className="card bg-gray-900 w-96 shadow-sm">
-     <div className="card-body">
-    <h2 className="card-title text-amber-100 justify-center underline">{isLogin ? "Login" : "SignUp"}</h2>
-    {
-      !isLogin &&
-      <>
-          <input type="text" name="firstName" value={inputData?.firstName} placeholder="Enter First Name" className="input text-amber-100 bg-gray-900 input-success my-3" onChange={changeHandler} />
-    <input type="text"  name="lastName" value={inputData?.lastName} placeholder="Enter Last Name" className="input text-amber-100 bg-gray-900 input-success my-3"  onChange={changeHandler}/>
-    </>
-    }
-    <input type="text" name="emailId" value={inputData?.emailId} placeholder="Enter e-mail Id" className="input text-amber-100 bg-gray-900 input-success my-3" onChange={changeHandler} />
-    <input type="text"  name="password"value={inputData?.password} placeholder="Enter password" className="input text-amber-100 bg-gray-900 input-success my-3"  onChange={changeHandler}/>
-    <div className="card-actions justify-center">
-      <button onClick={isLogin ? loginHandler: signupHandler} className="btn w-80 btn-warning">{isLogin ? "Login" : "SignUp"}</button>
-      <div>
-        <Link to={isLogin? "/signup" : '/login'} className='text-white underline mt-3'>{isLogin? "If you don't have account SignUp here" : "Login here"}</Link>
+ <div className="flex justify-center  min-h-screen p-4">
+  <div className={isLogin?"card h-80 mt-5 bg-gray-900 w-full max-w-md shadow-sm":"card h-114 mt-5 bg-gray-900 w-full max-w-md shadow-sm"}>
+    <div className="card-body">
+      <h2 className="card-title text-amber-100 justify-center underline">
+        {isLogin ? "Login" : "SignUp"}
+      </h2>
+
+      {!isLogin && (
+        <>
+          <input
+            type="text"
+            name="firstName"
+            value={inputData?.firstName}
+            placeholder="Enter First Name"
+            className="input text-amber-100 bg-gray-900 input-success my-3 w-full"
+            onChange={changeHandler}
+          />
+          <input
+            type="text"
+            name="lastName"
+            value={inputData?.lastName}
+            placeholder="Enter Last Name"
+            className="input text-amber-100 bg-gray-900 input-success my-3 w-full"
+            onChange={changeHandler}
+          />
+        </>
+      )}
+
+      <input
+        type="text"
+        name="emailId"
+        value={inputData?.emailId}
+        placeholder="Enter e-mail Id"
+        className="input text-amber-100 bg-gray-900 input-success my-3 w-full"
+        onChange={changeHandler}
+      />
+
+      <input
+        type="password"
+        name="password"
+        value={inputData?.password}
+        placeholder="Enter password"
+        className="input text-amber-100 bg-gray-900 input-success my-3 w-full"
+        onChange={changeHandler}
+      />
+
+      <div className="card-actions flex flex-col items-center gap-3">
+        <button
+          onClick={isLogin ? loginHandler : signupHandler}
+          className="btn w-full btn-warning"
+        >
+          {isLogin ? "Login" : "SignUp"}
+        </button>
+        <Link
+          to={isLogin ? "/signup" : "/login"}
+          className="text-amber-700  mt-2 text-center border-2 p-2 rounded-2xl"
+        >
+          {isLogin
+            ? "If you don't have account SignUp here"
+            : "Login here"}
+      
+        </Link>
       </div>
     </div>
   </div>
 </div>
-      
-    </div>
+
     {
       showToast.open && <Toast open={showToast?.open} message={showToast.message} error={showToast.error} setShowToast={setShowToast}  /> 
     }

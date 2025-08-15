@@ -35,7 +35,7 @@ function Feed() {
 return (
     <>
         {feed?.length > 0 ? (
-            <div>
+            <div className='h-screen'>
                 <UserCard data={feed[0]} />
             </div>
 

@@ -51,31 +51,49 @@ function ConnectionRequets() {
         reqConnectionsList?.map((el)=>{
             const data=el.fromUserId
             return(
-                <div className='flex justify-between items-center bg-gray-900 m-10 rounded p-5'>
-                    <div>
-                      <img
-                      src={data?.photoUrl} 
-                      className="h-20 w-20"
-                      alt="connect-image"
-                      
-                      />
-                    </div>
-                    <div className='max-w-90'>
-                        <h1 className='text-white text-center'>{data?.firstName} {data?.lastName}</h1>
-                        <p className='text-white text-center max-w-50'>{data?.about}</p>
-                        {
-                            data?.skills?.length > 0  && 
-                             <p className='text-orange-400'>Skills : {data?.skills?.join(",")}</p>
-                        }
+             <div className="flex flex-col md:flex-row justify-between items-center bg-gray-900 m-4 md:m-10 rounded p-5 gap-4">
+  
+  {/* Image */}
+  <div className="flex-shrink-0">
+    <img
+      src={data?.photoUrl}
+      className="h-20 w-20 rounded-full object-cover"
+      alt="connect-image"
+    />
+  </div>
 
-                    </div>
-                    <div className='flex flex-col'>
-                      <div onClick={()=>decisionhandler("accepted",el._id)} className='btn btn-success my-2 mx-2'>Accept</div>   
-                      <div onClick={()=>decisionhandler("rejected",el._id)} className='btn btn-error my-2 mx-2'>Reject</div> 
-                    </div>
+  {/* User Info */}
+  <div className="flex-1 text-center md:text-left max-w-full md:max-w-[60%]">
+    <h1 className="text-white font-semibold">
+      {data?.firstName} {data?.lastName}
+    </h1>
+    <p className="text-white break-words">
+      {data?.about}
+    </p>
+    {data?.skills?.length > 0 && (
+      <p className="text-orange-400 mt-2">
+        Skills: {data?.skills?.join(", ")}
+      </p>
+    )}
+  </div>
 
+  {/* Action Buttons */}
+  <div className="flex flex-row md:flex-col gap-2">
+    <button
+      onClick={() => decisionhandler("accepted", el._id)}
+      className="btn btn-success"
+    >
+      Accept
+    </button>
+    <button
+      onClick={() => decisionhandler("rejected", el._id)}
+      className="btn btn-error"
+    >
+      Reject
+    </button>
+  </div>
+</div>
 
-                </div>
             )
         })
       }

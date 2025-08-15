@@ -4,7 +4,7 @@ import ConnectionRequets from '../../components/ConnectionRequets'
  function Requests() {
  
   return (
- <div className='flex justify-center mb-20'>
+ <div className='flex justify-center h-screen'>
       <ConnectionRequets/>
  </div>
    

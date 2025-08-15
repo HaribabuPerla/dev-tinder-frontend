@@ -11,7 +11,6 @@ function UserCard({data}) {
     const decisionHandler=async(status,id)=>{
       try{
         const res =  await axiosRequest(`/request/${status}/${id}`)
-        console.log("res======>14",res)
         if(res?.data?.status == 200){
           dispatch(removeUserFromFeed(id))
         }
@@ -23,8 +22,8 @@ function UserCard({data}) {
     }
     
   return (
-    <div className="flex justify-center my-10 h-120">
-      <div className="card bg-gray-900 w-96 shadow-sm">
+    <div className="flex justify-center mx-10 my-5  md:my-10">
+      <div className="card h-116 bg-gray-900 w-96 shadow-sm">
   <figure>
     <img
       src={data?.photoUrl}
@@ -42,7 +41,7 @@ function UserCard({data}) {
     { user?._id != data?._id &&
     <div className="card-actions justify-center my-2">
       <button onClick={()=>decisionHandler("interested",data?._id)} className="btn btn-success text-white">Interested</button>
-     <button onClick={()=>decisionHandler("ignored",data?._id)} className="btn btn-error text-white">Igonored</button>
+     <button onClick={()=>decisionHandler("ignored",data?._id)} className="btn btn-error text-white">Ignored</button>
     </div>
  }
   </div>

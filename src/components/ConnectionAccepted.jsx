@@ -40,28 +40,40 @@ function ConnectionAccepted() {
         accptedConnectionList?.map((el)=>{
             const data=el.fromUserId
             return(
-                <div className='flex justify-between gap-30 items-center bg-gray-900 m-10 rounded p-5'>
-                    <div>
-                      <img
-                      src={data?.photoUrl} 
-                      className="h-20 w-20 rounded-2xl"
-                      alt="connect-image"
-                      
-                      />
-                    </div>
-                    <div>
-                        <h1 className='text-white text-center'>{data?.firstName} {data?.lastName}</h1>
-                        <p className='text-white text-center max-w-50'>{data?.about}</p>
-                        {
-                            data?.skills?.length > 0  && 
-                             <p className='text-orange-400'>Skills : {data?.skills?.join(",")}</p>
-                        }
+             <div className="flex flex-col md:flex-row justify-between items-center bg-gray-900 m-4 md:m-10 rounded p-5 gap-6">
+  
+  {/* Image */}
+  <div className="flex-shrink-0">
+    <img
+      src={data?.photoUrl}
+      className="h-20 w-20 rounded-2xl object-cover"
+      alt="connect-image"
+    />
+  </div>
 
-                    </div>
-                    <div>
-                       <h2 className='text-white border-2 border-amber-700 p-3 rounded-3xl'> Status : {el?.status} </h2>
-                    </div>
-                </div>
+  {/* User Info */}
+  <div className="flex-1 text-center md:text-left max-w-full md:max-w-[60%]">
+    <h1 className="text-white font-semibold">
+      {data?.firstName} {data?.lastName}
+    </h1>
+    <p className="text-white break-words">
+      {data?.about}
+    </p>
+    {data?.skills?.length > 0 && (
+      <p className="text-orange-400 mt-2">
+        Skills: {data?.skills?.join(", ")}
+      </p>
+    )}
+  </div>
+
+  {/* Status */}
+  <div className="mt-2 md:mt-0">
+    <h2 className="text-white border-2 border-amber-700 p-3 rounded-3xl text-center">
+      Status: {el?.status}
+    </h2>
+  </div>
+</div>
+
             )
         })
       }

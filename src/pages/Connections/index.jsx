@@ -4,7 +4,7 @@ import ConnectionAccepted from '../../components/ConnectionAccepted'
 function Connections() {
   return (
  
-<div className='flex justify-center mb-20'>
+<div className='flex justify-center pb-50 h-screen'>
        <ConnectionAccepted/>
     </div>
   )

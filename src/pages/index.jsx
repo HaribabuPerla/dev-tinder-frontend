@@ -41,15 +41,16 @@ function Body() {
     loggedInUserApiCall();
   }, [])
   return (
-    <div className='bg-amber-200 h-200'>
+   <>
       <Navbar />
 
       <Outlet />
 
 
       <Footer />
+      </>
 
-    </div>
+  
   )
 }
 
