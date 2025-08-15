@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axiosRequest from '../config/axios';
+import Loader from './Loader';
 
 
 
@@ -7,7 +8,7 @@ import axiosRequest from '../config/axios';
 
 function ConnectionAccepted() {
 
-    const [accptedConnectionList,setAccptedConnecionList]=useState([]);
+    const [accptedConnectionList,setAccptedConnecionList]=useState(null);
 
     useEffect(()=>{
         fetchConnections()
@@ -25,18 +26,18 @@ function ConnectionAccepted() {
             console.log("err",err)
         }
     }
- if(accptedConnectionList?.length == 0){
-    return(
-        <div className='flex justify-center'>
-            <h3>Accpted Connections Not Found</h3>
-        </div>
-    )
- }
+//  if(accptedConnectionList?.length == 0){
+//     return(
+//         <div className='flex justify-center h-screen'>
+//             <h3>Accpted Connections Not Found</h3>
+//         </div>
+//     )
+//  }
   
   return (
     <>
     <div>
-      {
+      { accptedConnectionList ?.length > 0?
         accptedConnectionList?.map((el)=>{
             const data=el.fromUserId
             return(
@@ -76,6 +77,12 @@ function ConnectionAccepted() {
 
             )
         })
+        : accptedConnectionList?.length == 0 ? 
+          <div className='flex justify-center h-screen'>
+            <h3>Accpted Connections Not Found</h3>
+        </div>
+        :
+        <Loader/>
       }
     </div>
     </>

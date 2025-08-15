@@ -5,6 +5,7 @@ import axiosRequest from '../../config/axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFeed } from '../../utils/feedSlice';
+import Loader from '../../components/Loader';
 
 function Feed() {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function Feed() {
         fetchFeed();
     },[])
     if(feed?.length == 0){
-        return <div className='flex justify-center'>
+        return <div className='flex justify-center h-screen'>
                 <h1>New Feed is not available</h1> 
              </div>
     }
@@ -40,10 +41,7 @@ return (
             </div>
 
         ) :
-        <div className="flex justify-center items-center h-screen">
-
-        <span className="loading loading-spinner text-warning"></span>
-        </div>
+         <Loader/>
         }
     </>
 );

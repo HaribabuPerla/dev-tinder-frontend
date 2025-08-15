@@ -39,7 +39,7 @@ function ConnectionRequets() {
     }
    }
    if(reqConnectionsList?.length == 0){
-    return <div className='justify-center items-center'>
+    return <div className='justify-center items-center h-screen'>
         <h1>Connection Requests Not Found</h1>
 
     </div>

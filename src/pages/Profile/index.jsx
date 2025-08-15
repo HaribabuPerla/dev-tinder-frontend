@@ -16,7 +16,7 @@ import UserCard from '../../components/UserCard'
         </div>
     </div>
     :
-    <h1>Loading...</h1>
+     <Loader/>
     }
     </>
   )

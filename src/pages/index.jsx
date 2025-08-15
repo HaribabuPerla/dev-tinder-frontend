@@ -43,9 +43,8 @@ function Body() {
   return (
    <>
       <Navbar />
-
+     
       <Outlet />
-
 
       <Footer />
       </>

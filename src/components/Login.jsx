@@ -13,6 +13,7 @@ import Signup from '../pages/signup';
 function Login({isLogin=true}) {
     const [inputData,setInputData]=useState({firstName:"",lastName:"",emailId:"",password:""});
     const [showToast,setShowToast]=useState({message:"",error:false,open:false})
+    const [loader,setLoader]=useState(false)
     const dispatch = useDispatch();
     const navigation=useNavigate();
   
@@ -27,6 +28,7 @@ function Login({isLogin=true}) {
     }
 
     const loginHandler=async()=>{
+      setLoader(true)
    const response = await  axiosRequest("/login","post",inputData)
   if(response?.data?.status === 200){
   
@@ -41,14 +43,16 @@ function Login({isLogin=true}) {
 
     }else{
        setShowToast({
-      message: response?.data?.message || "Login Failed",
+      message: response?.data?.message|| response?.message || "Login Failed",
       error: true,
       open: true
     })
     }
+    setLoader(false)
   }
 
   const signupHandler=async()=>{
+    setLoader(true)
     try{
      const res = await axiosRequest("/signup","post",inputData)
       if(res?.data?.status == 200){
@@ -60,6 +64,7 @@ function Login({isLogin=true}) {
     navigation("/login");
 
       }else{
+      
           setShowToast({
       message: res?.data?.message|| res?.message || "Something went wrong",
       error: true,
@@ -70,6 +75,7 @@ function Login({isLogin=true}) {
     }catch(err){
       console.log("error====>",err)
     }
+    setLoader(false)
   }
   return (
     <>
@@ -79,6 +85,7 @@ function Login({isLogin=true}) {
       <h2 className="card-title text-amber-100 justify-center underline">
         {isLogin ? "Login" : "SignUp"}
       </h2>
+
 
       {!isLogin && (
         <>
@@ -124,7 +131,8 @@ function Login({isLogin=true}) {
           onClick={isLogin ? loginHandler : signupHandler}
           className="btn w-full btn-warning"
         >
-          {isLogin ? "Login" : "SignUp"}
+         
+          {loader ?  <span className="loading loading-spinner text-warning"></span>:isLogin ? "Login" : "SignUp"}
         </button>
         <Link
           to={isLogin ? "/signup" : "/login"}
