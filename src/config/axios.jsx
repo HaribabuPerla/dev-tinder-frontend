@@ -1,11 +1,12 @@
 /* eslint-disable no-undef */
 import axios from "axios"
+const baseURL = import.meta.env.VITE_BASE_URL;
+console.log(baseURL);
 
 export default async function axiosRequest(url,method,data) {
     try {
     const axiosConfig = {
-      // eslint-disable-next-line no-undef
-      baseURL: process.env.BASE_URL,
+      baseURL: baseURL,
       url: url,
       method: method || "post",
       headers:{
